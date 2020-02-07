@@ -9,6 +9,11 @@
     <div class="container">
         <img src="../static/Logo.png" alt="Logo">
 
+        {% if message %}
+            <!-- "safe" make the output secure -->
+            <p class="message">{{ message | safe }}</p>
+        {% endif %}
+
         <form action="/submit" method="POST">
             <div class="form-group">
                 <h3>Customer Name</h3>

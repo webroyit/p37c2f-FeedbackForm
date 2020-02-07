@@ -15,6 +15,10 @@ def submit():
         rating = request.form["rating"]
         comments = request.form["comments"]
         
+        # validation 
+        if customer == "" or dealer == "":
+            return render_template("index.html", message="Make sure you filled out all the fields")
+
         return render_template("success.html")
 
 if __name__ == "__main__":
