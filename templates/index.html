@@ -6,7 +6,37 @@
     <title>FeedBack Form</title>
 </head>
 <body>
-    <h1>WRI - FeekBack Form</h1>
-    <img src="../static/Logo 1.png" alt="Logo">
+    <div class="container">
+        <img src="../static/Logo.png" alt="Logo">
+
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <h3>Customer Name</h3>
+                <input type="text" name="customer" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <select name="dealer">
+                    <option value="">Select Dealer</option>
+                    <option value="Bob Boat">Bob Boat</option>
+                    <option value="Jenny Time">Jenny Time</option>
+                    <option value="Kim Water">Kim Water</option>
+                    <option value="Jake Finn">Jake Finn</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h3>Rate your dealer</h3>
+                <input type="radio" name="rating" value="1" />1
+                <input type="radio" name="rating" value="2" />2
+                <input type="radio" name="rating" value="3" />3
+                <input type="radio" name="rating" value="4" />4
+                <input type="radio" name="rating" value="5" checked/>5
+            </div>
+            <div class="form-group">
+                <h3>Any Commetns</h3>
+                <textarea name="comments" cols="30" rows="10" placeholder="How was your experience?"></textarea>
+            </div>
+        </form>
+    </div>
+    
 </body>
 </html>
