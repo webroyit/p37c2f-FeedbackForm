@@ -1,6 +1,21 @@
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+ENV = "dev"
+
+if ENV == "dev":
+    # allow the server to keep reloading
+    app.debug = True
+
+    # conntect to the database
+    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:123456@localhost/boat"
+else:
+    app.debug = False
+
+# prevent the warming message
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # show the home page
 @app.route("/")
@@ -22,8 +37,5 @@ def submit():
         return render_template("success.html")
 
 if __name__ == "__main__":
-    # allow the server to keep reloading
-    app.debug = True
-
     # run the server
     app.run()
