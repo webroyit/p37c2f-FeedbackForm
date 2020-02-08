@@ -17,6 +17,24 @@ else:
 # prevent the warming message
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+db = SQLAlchemy(app)
+
+# define the database model
+class Feedback(db.Model):
+    __tablename__ = "feedback"
+    id = db.Column(db.Integer, primary_key = True)
+    customer = db.Column(db.String(200), unique = True)
+    dealer = db.Column(db.String(200))
+    rating = db.Column(db.Integer)
+    comments = db.Column(db.Text())
+
+    # constructor
+    def __init__(self, customer, dealer, rating, comments):
+        self.customer = customer
+        self.dealer = dealer
+        self.rating = rating
+        self.comments = comments
+
 # show the home page
 @app.route("/")
 def index():
