@@ -52,7 +52,19 @@ def submit():
         if customer == "" or dealer == "":
             return render_template("index.html", message="Make sure you filled out all the fields")
 
-        return render_template("success.html")
+        # prevent user from submitting twice
+        if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
+            data = Feedback(customer, dealer, rating, comments)
+
+            # add the data to the database
+            db.session.add(data)
+
+            # save the changes
+            db.session.commit()
+
+            return render_template("success.html")
+
+        return render_template("index.html", message="You have already submitted")
 
 if __name__ == "__main__":
     # run the server
