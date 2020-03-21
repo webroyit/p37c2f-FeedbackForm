@@ -10,7 +10,8 @@ if ENV == "dev":
     app.debug = True
 
     # conntect to the database
-    app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:123456@localhost/boat"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+
 else:
     app.debug = False
 
