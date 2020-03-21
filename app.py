@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from send_mail import send_mail
 
 app = Flask(__name__)
 
@@ -62,6 +63,8 @@ def submit():
 
             # save the changes
             db.session.commit()
+
+            send_mail(customer, dealer, rating, comments)
 
             return render_template("success.html")
 

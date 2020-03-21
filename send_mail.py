@@ -21,3 +21,8 @@ def send_mail(customer, dealer, rating, comments):
     msg["Subject"] = "WRIboat Feedback"
     msg["From"] = sender_email
     msg["To"] = receiver_email
+
+    # send mail
+    with smtplib.SMTP(smtp_server, port) as server:
+        server.login(login, password)
+        server.sendmail(sender_email, receiver_email, msg.as_string())
